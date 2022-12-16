@@ -1,16 +1,14 @@
 import { component$ } from '@builder.io/qwik';
-import { DocumentHead, RequestHandler } from '@builder.io/qwik-city';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { List } from '~/components/list/list';
 
 export default component$(() => {
   return (
-    <>
-    </>
+    <div>
+      <List />
+    </div>
   );
 });
-
-export const onGet: RequestHandler = async ({ response }) => {
-  throw response.redirect(`/${new Date().toLocaleDateString('sv')}`);
-};
 
 export const head: DocumentHead = {
   title: 'Welcome to Qwik',

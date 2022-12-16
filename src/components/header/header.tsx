@@ -1,22 +1,36 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
+import { Link, useLocation } from '@builder.io/qwik-city';
 import styles from './header.css?inline';
 
 export default component$(() => {
   useStylesScoped$(styles);
+  const loc = useLocation();
+
+  const today = new Date();
+  const dateFromParams = new Date(loc.params.date);
+
+  const left = new Date(dateFromParams);
+  left.setDate(dateFromParams.getDate() - 1);
+
+  const right = new Date(dateFromParams);
+  right.setDate(dateFromParams.getDate() + 1);
+
+  const showRight = right <= today;
 
   return (
     <header>
         {/* TODO: SVG */}
-        {/* TODO: Link to earlier date */}
-        <Link href="/">Left</Link>
+        <Link href={`/${left.toLocaleDateString('sv')}`}>Left</Link>
 
-        {/* TODO: prop */}
-        <span>2022-12-16</span>
+        <span>{loc.params.date}</span>
 
         {/* TODO: SVG */}
-        {/* TODO: Link to next date */}
-        <Link href="/">Right</Link>
+        {
+          showRight ? 
+            <Link href={`/${right.toLocaleDateString('sv')}`}>Right</Link>
+          :
+            null
+        }
     </header>
   );
 });

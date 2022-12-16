@@ -1,0 +1,15 @@
+.list-item {
+  margin: 10px 0;
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.list-item-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.list-item-content {
+  padding: 0 10px;
+}
