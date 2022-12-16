@@ -63,3 +63,38 @@ The production build will generate client and server modules by running both cli
 ```shell
 npm run build # or `yarn build`
 ```
+
+## Game Plan
+
+`/` -> defaults to the current date's horoscopes
+`/2022-12-16` -> will list the date's horoscopes.
+
+```html
+<Header>
+    "left arrow" (button to navigate to the previous day's horoscopes)
+
+    2022-12-16 (title)
+
+    "right arrow" (button to navigate to the next day's horoscopes, if available)
+
+    "cogwheel" (settings... for saving your sign in localStorage, etc)
+</Header>
+
+<Main>
+    <List>
+        <!-- Possibly folded accordions, displaying the Sign as title so it's easy to scroll and navigate on mobile -->
+        <ListItem>
+            <!-- Always shown, even when folded. -->
+            <ListItemTitle>
+                _sign_
+                Sagittarius
+                _sign dates_
+            </ListItemTitle>
+
+            <ListItemContent>
+                Daily summary
+            </ListItemContent>
+        </ListItem>
+    </List>
+</Main>
+```
